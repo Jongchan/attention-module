@@ -14,15 +14,6 @@ import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 import torchvision.models as models
 from MODELS.model_resnet import *
-#from MODELS.model_resnet_v2 import *
-from MODELS.model_resnext import *
-from MODELS.model_mobilenet import *
-from MODELS.model_squeezenet import *
-from MODELS.model_resnext_v2 import *
-from MODELS.model_densenet_imagenet import *
-from MODELS.model_wideresnet_imagenet import *
-from MODELS.model_inception import *
-from flops_calculator import *
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 model_names = sorted(name for name in models.__dict__
@@ -92,8 +83,6 @@ def main():
     model = model.cuda()
     print ("model")
     print (model)
-    calculate_flops(model, 'ImageNet')
-    #sys.exit(1)
 
     # get the number of model parameters
     print('Number of model parameters: {}'.format(
