@@ -6,6 +6,4 @@ python train_imagenet.py \
 			--batch-size 256 --lr 0.1 \
 			--att-type CBAM \
 			--prefix RESNET50_IMAGENET_CBAM \
-            --resume ./checkpoints/RESNET50_CBAM_new_name_wrap.pth \
-            --evaluate \
 			./data/ImageNet/
