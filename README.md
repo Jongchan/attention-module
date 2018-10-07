@@ -1,4 +1,4 @@
-# attention-module
+# BAM and CBAM
 Official PyTorch code for "BAM: Bottleneck Attention Module (BMVC2018)" and "CBAM: Convolutional Block Attention Module (ECCV2018)"
 
 ### Requirement
