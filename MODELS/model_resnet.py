@@ -139,7 +139,7 @@ class ResNet(nn.Module):
             elif key.split(".")[-1]=='bias':
                 self.state_dict()[key][...] = 0
 
-    def _make_layer(self, block, planes, blocks, att_type):
+    def _make_layer(self, block, planes, blocks, stride=1, att_type=None):
         downsample = None
         if stride != 1 or self.inplanes != planes * block.expansion:
             downsample = nn.Sequential(

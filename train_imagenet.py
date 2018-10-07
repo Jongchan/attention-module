@@ -51,7 +51,7 @@ parser.add_argument('--resume', default='', type=str, metavar='PATH',
                     help='path to latest checkpoint (default: none)')
 parser.add_argument("--seed", type=int, default=1234, metavar='BS', help='input batch size for training (default: 64)')
 parser.add_argument("--prefix", type=str, required=True, metavar='PFX', help='prefix for logging & checkpoint saving')
-parser.add_argument('--use-cbam', dest='use_cbam', action='store_true', help='use CBAM')
+parser.add_argument('--evaluate', dest='evaluate', action='store_true', help='evaluation only')
 parser.add_argument('--att-type', type=str, choices=['BAM', 'CBAM'], default=None)
 best_prec1 = 0
 
@@ -96,7 +96,8 @@ def main():
             args.start_epoch = checkpoint['epoch']
             best_prec1 = checkpoint['best_prec1']
             model.load_state_dict(checkpoint['state_dict'])
-            optimizer.load_state_dict(checkpoint['optimizer'])
+            if 'optimizer' in checkpoint:
+                optimizer.load_state_dict(checkpoint['optimizer'])
             print("=> loaded checkpoint '{}' (epoch {})"
                   .format(args.resume, checkpoint['epoch']))
         else:
@@ -113,8 +114,19 @@ def main():
 
     # import pdb
     # pdb.set_trace()
-    size0 = (224,299)[args.arch=='inception']
-    size1 = (256,352)[args.arch=='inception']
+    val_loader = torch.utils.data.DataLoader(
+        datasets.ImageFolder(valdir, transforms.Compose([
+                transforms.Scale(256),
+                transforms.CenterCrop(224),
+                transforms.ToTensor(),
+                normalize,
+                ])),
+            batch_size=args.batch_size, shuffle=False,
+           num_workers=args.workers, pin_memory=True)
+    if args.evaluate:
+        validate(val_loader, model, criterion, 0)
+        return
+
     train_dataset = datasets.ImageFolder(
         traindir,
         transforms.Compose([
@@ -129,19 +141,6 @@ def main():
     train_loader = torch.utils.data.DataLoader(
         train_dataset, batch_size=args.batch_size, shuffle=(train_sampler is None),
         num_workers=args.workers, pin_memory=True, sampler=train_sampler)
-
-    val_loader = torch.utils.data.DataLoader(
-        datasets.ImageFolder(valdir, transforms.Compose([
-                transforms.Scale(size1),
-                transforms.CenterCrop(size0),
-                transforms.ToTensor(),
-                normalize,
-                ])),
-            batch_size=args.batch_size, shuffle=False,
-           num_workers=args.workers, pin_memory=True)
-    if args.evaluate:
-        validate(val_loader, model, criterion)
-        return
 
     for epoch in range(args.start_epoch, args.epochs):
         adjust_learning_rate(optimizer, epoch)
