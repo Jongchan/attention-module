@@ -3,8 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import math
 from torch.nn import init
-from cbam import *
-from bam import *
+from .cbam import *
+from .bam import *
 
 def conv3x3(in_planes, out_planes, stride=1):
     "3x3 convolution with padding"
@@ -67,7 +67,7 @@ class Bottleneck(nn.Module):
         self.stride = stride
 
         if use_cbam:
-            self.cbam = CBAM( planes, 16 )
+            self.cbam = CBAM( planes * 4, 16 )
         else:
             self.cbam = None
 
