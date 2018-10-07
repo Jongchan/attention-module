@@ -7,7 +7,7 @@ class Flatten(nn.Module):
     def forward(self, x):
         return x.view(x.size(0), -1)
 class ChannelGate(nn.Module):
-    def __init__(self, gate_channel, reduction_ratio==16, num_layers=1):
+    def __init__(self, gate_channel, reduction_ratio=16, num_layers=1):
         super(ChannelGate, self).__init__()
         self.gate_activation = gate_activation
         self.gate_c = nn.Sequential()
