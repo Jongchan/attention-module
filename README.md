@@ -1,5 +1,5 @@
 # BAM and CBAM
-Official PyTorch code for "BAM: Bottleneck Attention Module (BMVC2018)" and "CBAM: Convolutional Block Attention Module (ECCV2018)"
+Official PyTorch code for "[BAM: Bottleneck Attention Module (BMVC2018)](http://bmvc2018.org/contents/papers/0092.pdf)" and "[CBAM: Convolutional Block Attention Module (ECCV2018)](http://openaccess.thecvf.com/content_ECCV_2018/html/Sanghyun_Woo_Convolutional_Block_Attention_ECCV_2018_paper.html)"
 
 ### Updates & Notices
 - 2018-10-08: ~~Currently, only CBAM test code is validated. **There may be minor errors in the training code**. Will be fixed in a few days.~~
