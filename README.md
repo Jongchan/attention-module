@@ -8,7 +8,7 @@ Official PyTorch code for "BAM: Bottleneck Attention Module (BMVC2018)" and "CBA
 ### Requirement
 
 The code is validated under below environment:
-- Ubuntu 16.04, 4 GTX 1080 Ti, PyTorch 0.4, CUDA 9.0 + CuDNN 7.0, Python 3.6
+- Ubuntu 16.04, 4 GTX 1080 Ti, Docker (PyTorch 0.4.1, CUDA 9.0 + CuDNN 7.0, Python 3.6)
 
 ### How to use
 
