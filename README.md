@@ -34,4 +34,4 @@ python train_imagenet.py --ngpu 4 --workers 20 --arch resnet --depth 50 --att-ty
 
 ### Other implementations
 
-- [MXNet implementation of CBAM with several modifications](https://github.com/bruinxiong/Modified-CBAMnet.mxnet)
+- [MXNet implementation of CBAM with several modifications](https://github.com/bruinxiong/Modified-CBAMnet.mxnet) by [bruinxiong](https://github.com/bruinxiong)
