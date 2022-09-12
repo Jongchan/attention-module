@@ -24,8 +24,8 @@ python train_imagenet.py --ngpu 4 --workers 20 --arch resnet --depth 50 --epochs
 
 ### Resume with checkpoints
 
-- ResNet50+CBAM (trained for 100 epochs) checkpoint is provided in this [link](https://www.dropbox.com/s/bt6zty02h9ibufi/RESNET50_CBAM_new_name_wrap.pth?dl=0). ACC@1=77.622 ACC@5=93.948
-- ResNet50+BAM (trained for 90 epochs) checkpoint is provided in this [link](https://www.dropbox.com/s/esw0m8e3cjg7ex4/RESNET50_IMAGENET_BAM_best.pth.tar?dl=0). ACC@1=76.860 ACC@5=93.416
+- ResNet50+CBAM (trained for 100 epochs) checkpoint is provided in this [link](https://drive.google.com/file/d/1mvAVvhLR_2XY_bPYxh-SEz4vDmGzSArO/view?usp=sharing). ACC@1=77.622 ACC@5=93.948
+- ResNet50+BAM (trained for 90 epochs) checkpoint is provided in this [link](https://drive.google.com/file/d/1auVf70gfL0ol40bvaX5rlbpn9cKIxhAL/view?usp=sharing). ACC@1=76.860 ACC@5=93.416
 
 For validation, please use the script as follows
 ```
